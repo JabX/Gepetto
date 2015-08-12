@@ -1,4 +1,4 @@
-﻿namespace Gepetto
+﻿open Gepetto
 
 module Program =
     [<EntryPoint>]
@@ -9,4 +9,3 @@ module Program =
             |> Score.Get
             |> printfn "%i%%"
         0
-

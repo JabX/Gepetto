@@ -3,12 +3,19 @@
 open SharpNL
 open SharpNL.Analyzer
 open FSharp.Data
+open System.IO
+open System.Reflection
 
 module Score =
+    // Gets full path of the pos-model folder
+    let dllPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+    let relativePosModel = Path.Combine(dllPath, @"\pos-model\");
+    let posModel = Path.GetFullPath(relativePosModel);
+
     let analyzer = new AggregateAnalyzer ()
-    analyzer.Add "../../pos-model/fr-sent.bin"
-    analyzer.Add "../../pos-model/fr-token.bin"
-    analyzer.Add "../../pos-model/fr-pos-maxent.bin"
+    posModel + "fr-sent.bin" |> analyzer.Add
+    posModel + "fr-token.bin" |> analyzer.Add
+    posModel + "fr-pos-maxent.bin" |> analyzer.Add
 
     type WordType = SqlEnumProvider<"select typeId from WordType", Config.DbString>
     type GScores = SqlCommandProvider<"select gScore from getScores(@data) order by wRank", Config.DbString>
