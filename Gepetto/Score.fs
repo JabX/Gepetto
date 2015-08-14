@@ -1,16 +1,14 @@
 ﻿namespace Gepetto
 
+open FSharp.Data
 open SharpNL
 open SharpNL.Analyzer
-open FSharp.Data
-open System.IO
-open System.Reflection
 
 module Score =
-    // Gets full path of the pos-model folder
-    let dllPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-    let relativePosModel = Path.Combine(dllPath, @"\pos-model\");
-    let posModel = Path.GetFullPath(relativePosModel);
+    // The path of the binaries with the pos models isn't always the same
+    let posModel = match System.AppDomain.CurrentDomain.RelativeSearchPath with
+                   | null -> @"pos-model\" // Local context
+                   | path -> path + @"\pos-model\" // Web context
 
     let analyzer = new AggregateAnalyzer ()
     posModel + "fr-sent.bin" |> analyzer.Add
