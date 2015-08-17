@@ -39,7 +39,7 @@ module Client =
                     status.Value <- Working
                     async {
                         let! data = Server.GetScore input.Value
-                        answer.Text <- sprintf "%i%%" data
+                        answer.Text <- data
                         status.Value <- Done
                     }
                     |> Async.Start
