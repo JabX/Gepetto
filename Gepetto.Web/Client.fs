@@ -19,18 +19,19 @@ module Client =
         let status = Var.Create Empty
 
         let output (st: Var<Status>) =
+            let repDiv = divAttr [attr.id "response"]
             View.FromVar st
             |> View.Map (fun stat -> 
                 match stat with
-                | Empty -> div []
-                | Working -> h4 [text "Recherche en cours..."]
-                | Done -> div [
+                | Empty -> repDiv []
+                | Working -> repDiv [ h4 [text "Recherche en cours..."] ]
+                | Done -> repDiv [
                             h4 [text "La réponse :"]
-                            div [answer]
+                            answer
                         ])
             |> Doc.EmbedView
             
-        div [
+        divAttr [attr.id "app"] [
             h2 [text "Les chiffres de Gepetto"]
             input
             buttonAttr [
@@ -43,6 +44,6 @@ module Client =
                     }
                     |> Async.Start
                 )
-            ] [text "Poser la question !"]
+            ] [text "Demander à Gepetto !"]
             output status
         ]

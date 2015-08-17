@@ -1,0 +1,74 @@
+body {
+    background-color: ivory;
+    font-family: 'Segoe UI Light', 'Helvetica Neue', sans-serif;
+    text-align: center;
+}
+
+h2 {
+    font-size: 35pt;
+    color: dodgerblue;
+    font-weight: 100;
+    margin-bottom: 15pt;
+    text-shadow: 0 0 1.5px slateblue;
+}
+
+input {
+    transition: all ease-in .1s;
+    display: block;
+    margin: auto;
+    width: 70%;
+    font-size: 20pt;
+    font-family: 'Segoe UI Semilight', 'Helvetica Neue', sans-serif;
+    border: none;
+    box-shadow: dodgerblue 0px 0px 10px;
+    margin-bottom: 15pt;
+    padding: 3pt;
+    color: dodgerblue;
+}
+
+input:hover {
+    transition: all ease-in .1s;
+    box-shadow: royalblue 0px 0px 15px;
+    color: royalblue;
+}
+
+input:focus {
+    transition: all ease-in .1s;
+    box-shadow: slateblue 0px 0px 15px;
+    color: slateblue;
+}
+
+button {
+    transition: background-color ease-in .1s;
+    background-color: dodgerblue;
+    color: white;
+    font-family: 'Segoe UI Light', 'Helvetica Neue', sans-serif;
+    font-size: 20pt;
+    border: none;
+    padding: 10pt 20pt 12pt 20pt;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: background-color ease-in .1s;
+    background-color: royalblue;
+}
+
+button:active {
+    background-color: slateblue;
+}
+
+h4 {
+    font-size: 20pt;
+    color: dimgray;
+    font-weight: 100;
+    margin-bottom: 0;
+}
+
+h1 {
+    margin-top: 10pt;
+    font-size: 40pt;
+    color: dodgerblue;
+    font-weight: 100;
+}

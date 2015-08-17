@@ -22,7 +22,7 @@ module Score =
     /// <summary>Computes the score from the given sentence and returns it</summary>
     let Get (sentence: string) =
         // We're using a POS-Tagger to tag the sentence
-        let doc = new Document ("fr", sentence)
+        let doc = new Document ("fr", if sentence = "" then "lol" else sentence)
         analyzer.Analyze doc
 
         // Keeping the word order in that index
