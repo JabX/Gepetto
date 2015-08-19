@@ -14,7 +14,7 @@ module Client =
         | Done
 
     let Main () =
-        let input = inputAttr [attr.value ""] []
+        let input = inputAttr [attr.value ""; attr.name "gepetto"] []
         let answer = h1 []
         let status = Var.Create Empty
 
@@ -33,17 +33,21 @@ module Client =
             
         divAttr [attr.id "app"] [
             h2 [text "Les chiffres de Gepetto"]
-            input
-            buttonAttr [
-                on.click (fun _ _ ->
-                    status.Value <- Working
-                    async {
-                        let! data = Server.GetScore input.Value
-                        answer.Text <- data
-                        status.Value <- Done
-                    }
-                    |> Async.Start
-                )
-            ] [text "Demander à Gepetto !"]
+            form [
+                input
+                buttonAttr [
+                    attr.``type`` "submit"
+                    attr.formaction "javascript:this.click()"
+                    on.click (fun _ _ ->
+                        status.Value <- Working
+                        async {
+                            let! data = Server.GetScore input.Value
+                            answer.Text <- data
+                            status.Value <- Done
+                        }
+                        |> Async.Start
+                    )
+                ] [text "Demander à Gepetto !"]
+            ]
             output status
         ]

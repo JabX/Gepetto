@@ -1,5 +1,4 @@
 body {
-    background-color: ivory;
     font-family: 'Segoe UI Light', 'Helvetica Neue', sans-serif;
     text-align: center;
 }
@@ -24,6 +23,7 @@ input {
     margin-bottom: 15pt;
     padding: 3pt;
     color: dodgerblue;
+    border-radius: 2pt;
 }
 
 input:hover {
@@ -48,6 +48,7 @@ button {
     padding: 10pt 20pt 12pt 20pt;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 8px;
     cursor: pointer;
+    border-radius: 2pt;
 }
 
 button:hover {
