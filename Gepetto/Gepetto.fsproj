@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Config.fs" />
+    <Compile Include="Dal.fs" />
     <Compile Include="Score.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />

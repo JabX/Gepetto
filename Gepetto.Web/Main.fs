@@ -6,13 +6,10 @@ open WebSharper.UI.Next
 open WebSharper.UI.Next.Server
 open WebSharper.UI.Next.Html
 
-type EndPoint =
-    | [<EndPoint "/">] Home
-
 module Templating =
     type MainTemplate = Templating.Template<"Main.html">
 
-    let Main ctx action title body =
+    let Main title body =
         Content.Doc (
             MainTemplate.Doc (
                 title = title,
@@ -21,14 +18,20 @@ module Templating =
         )
 
 module Site =
-    let HomePage ctx =
-        Templating.Main ctx EndPoint.Home "Les chiffres de Gepetto" [
-            client <@ Client.Main() @>
+    let Home ctx =
+        Templating.Main "Les chiffres de Gepetto" [
+            client <@ HomePage.Main () @>
+        ]
+
+    let Search ctx =
+        Templating.Main "Les chiffres de Gepetto" [
+            client <@ SearchPage.Main () @>
         ]
 
     [<Website>]
     let Main =
         Application.MultiPage (fun ctx endpoint ->
             match endpoint with
-            | EndPoint.Home -> HomePage ctx
+            | EndPoint.Home -> Home ctx
+            | EndPoint.Search -> Search ctx
         )

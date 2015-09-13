@@ -1,14 +1,13 @@
 ﻿namespace Gepetto.Web
 
 open WebSharper
-open WebSharper.JavaScript
 open WebSharper.UI.Next
 open WebSharper.UI.Next.Client
 open WebSharper.UI.Next.Html
 
 [<JavaScript>]
-module Client =
-    type Status = 
+module HomePage =
+    type Status =
         | Empty
         | Working
         | Done
@@ -32,6 +31,7 @@ module Client =
             |> Doc.EmbedView
             
         divAttr [attr.id "app"] [
+            aAttr [attr.href "search"] [text "Le dictionnaire"]
             h2 [text "Les chiffres de Gepetto"]
             form [
                 input

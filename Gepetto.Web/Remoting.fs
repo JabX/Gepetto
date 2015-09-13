@@ -21,3 +21,9 @@ module Server =
                                     | Score.ErrorType.QuestionType -> "Gepetto ne sait pas répondre à ça..."
                                     | _                            -> "Prout")
         }
+
+    [<Rpc>]
+    let SearchWordByName (word: string) =
+        async { 
+            return Dal.SearchWordByName word |> Seq.toArray
+        }

@@ -3,6 +3,11 @@ body {
     text-align: center;
 }
 
+a {
+    color: slateblue;
+    text-decoration: none;
+}
+
 h2 {
     font-size: 35pt;
     color: dodgerblue;
@@ -72,4 +77,14 @@ h1 {
     font-size: 40pt;
     color: dodgerblue;
     font-weight: 100;
+}
+
+ul {
+    list-style-type: square;
+    margin-left: calc(15% - 10pt);
+}
+
+li {
+    font-size: 15pt;
+    text-align: left;
 }
