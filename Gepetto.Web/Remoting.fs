@@ -23,7 +23,25 @@ module Server =
         }
 
     [<Rpc>]
-    let SearchWordByName (word: string) =
+    let SearchWordByName word =
         async { 
             return Dal.SearchWordByName word |> Seq.toArray
+        }
+
+    [<Rpc>]
+    let GetWord wordId =
+        async { 
+            return Dal.GetWord wordId
+        }
+
+    [<Rpc>]
+    let GetForms wordId =
+        async { 
+            return Dal.GetForms wordId |> Seq.toArray
+        }
+
+    [<Rpc>]
+    let GetSynonyms wordId =
+        async { 
+            return Dal.GetSynonyms wordId |> Seq.toArray
         }

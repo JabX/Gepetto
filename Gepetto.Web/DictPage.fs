@@ -8,7 +8,14 @@ open WebSharper.UI.Next.Client
 open WebSharper.UI.Next.Html
 
 [<JavaScript>]
-module SearchPage =
+module DictPage =
+    
+    let resultLine result =
+        li [
+            aAttr [attr.href <| "/word/" + result.id.ToString ()] [
+                text <| result.name + " (" + result.``type`` + ")"
+            ]
+        ] :> Doc
 
     let Main () =
         let searchTerm = Var.Create ""
@@ -29,7 +36,7 @@ module SearchPage =
             |> View.Map (fun results ->
                 match Seq.length results with
                 | 0 -> h4 [text "Pas de résultats"]
-                | _ -> results |> Seq.map (fun result -> li [text <| result.name + " (" + result.``type`` + ")"] :> Doc)
+                | _ -> results |> Seq.map resultLine
                                |> ul)
             |> Doc.EmbedView
         

@@ -18,20 +18,26 @@ module Templating =
         )
 
 module Site =
-    let Home ctx =
+    let Home () =
         Templating.Main "Les chiffres de Gepetto" [
             client <@ HomePage.Main () @>
         ]
 
-    let Search ctx =
+    let Search () =
         Templating.Main "Les chiffres de Gepetto" [
-            client <@ SearchPage.Main () @>
+            client <@ DictPage.Main () @>
+        ]
+
+    let Word wordId =
+        Templating.Main "Les chiffres de Gepetto" [
+            WordPage.Main wordId
         ]
 
     [<Website>]
     let Main =
         Application.MultiPage (fun ctx endpoint ->
             match endpoint with
-            | EndPoint.Home -> Home ctx
-            | EndPoint.Search -> Search ctx
+            | EndPoint.Home -> Home ()
+            | EndPoint.Search -> Search ()
+            | EndPoint.Word wordId-> Word wordId
         )

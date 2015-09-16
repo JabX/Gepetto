@@ -44,14 +44,15 @@
     <Compile Include="Remoting.fs" />
     <Compile Include="Routes.fs" />
     <Compile Include="HomePage.fs" />
-    <Compile Include="SearchPage.fs" />
+    <Compile Include="DictPage.fs" />
+    <Compile Include="WordPage.fs" />
     <Content Include="Main.html" />
     <Content Include="Main.css" />
+    <Compile Include="Main.fs" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Compile Include="Global.asax.fs" />
     <Content Include="packages.config" />
-    <Compile Include="Main.fs" />
   </ItemGroup>
   <Target Name="IncludeContent" BeforeTargets="Compile">
     <ItemGroup>
