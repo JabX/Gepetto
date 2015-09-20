@@ -32,17 +32,21 @@ module DictPage =
                 })
 
         let output (results: Var<seq<Word>>) =
+            let block: (seq<Doc> -> Elt) = divAttr [attr.``class`` "block"]
             results.View
             |> View.Map (fun results ->
                 match Seq.length results with
-                | 0 -> h4 [text "Pas de résultats"]
+                | 0 -> block [h4 [text "Pas de résultats"]]
                 | _ -> results |> Seq.map resultLine
-                               |> ul)
+                               |> ul :> Doc
+                               |> Seq.singleton
+                               |> Seq.append [h4 [text "Résultats"] :> Doc]
+                               |> block)
             |> Doc.EmbedView
         
         divAttr [attr.id "app"] [
-            aAttr [attr.href "/"] [text "Les chiffres"]
-            h2 [text "Le dictionnaire de Gepetto"]
+            h3 [text "Recherchez un mot..."]
+            iAttr [attr.``class`` "fa fa-search fa-lg"] []
             Doc.Input [] searchTerm
             output searchResults
             searchTermView |> View.Map (fun () -> Doc.Empty) |> Doc.EmbedView

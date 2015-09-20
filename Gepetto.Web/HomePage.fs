@@ -14,26 +14,26 @@ module HomePage =
 
     let Main () =
         let input = inputAttr [attr.value ""; attr.name "gepetto"] []
-        let answer = h1 []
+        let answer = h2 []
         let status = Var.Create Empty
 
         let output (st: Var<Status>) =
-            let repDiv = divAttr [attr.id "response"]
+            let repDiv = divAttr [attr.``class`` "block"]
             View.FromVar st
             |> View.Map (fun stat -> 
                 match stat with
-                | Empty -> repDiv []
-                | Working -> repDiv [ h4 [text "Recherche en cours..."] ]
+                | Empty -> div []
+                | Working -> repDiv [h4 [text "Recherche en cours..."]]
                 | Done -> repDiv [
-                            h4 [text "La réponse :"]
+                            h4 [text "La réponse"]
                             answer
                         ])
             |> Doc.EmbedView
             
         divAttr [attr.id "app"] [
-            aAttr [attr.href "search"] [text "Le dictionnaire"]
-            h2 [text "Les chiffres de Gepetto"]
+            h3 [text "Posez votre question..."]
             form [
+                iAttr [attr.``class`` "fa fa-search fa-lg"] []
                 input
                 buttonAttr [
                     attr.``type`` "submit"

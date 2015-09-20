@@ -1,90 +1,141 @@
 body {
-    font-family: 'Segoe UI Light', 'Helvetica Neue', sans-serif;
-    text-align: center;
+    margin: 0;
+    margin-top: -16px;
+    font-family: Lato, sans-serif;
+    font-weight: 400;
+    background-color: #ECF0F1;
 }
 
 a {
-    color: slateblue;
     text-decoration: none;
 }
 
-h2 {
-    font-size: 35pt;
-    color: dodgerblue;
-    font-weight: 100;
-    margin-bottom: 15pt;
-    text-shadow: 0 0 1.5px slateblue;
+header {
+    background-color: #2968A9;
 }
 
-input {
-    transition: all ease-in .1s;
+header ul {
+    padding-top: 20px;
+    padding-left: calc(50% - 130px);
+    padding-bottom: 20px;
+}
+
+header li {
     display: block;
+    float: left;
+    font-size: 13pt;
+    margin-right: 30px;
+}
+
+header li a {
+    color: #ADADAD;
+    transition: all ease-out .1s;
+    font-weight: 700;
+}
+
+header li.active a {
+    color: #ECF0F1;
+}
+
+header li a:hover {
+    color: #ECF0F1;
+    transition: all ease-out .1s;
+}
+
+header h1 {
+    clear: both;
+    text-align: center;
+    font-size: 45pt;
+    color: #ECF0F1;
+    font-weight: 400;
+    padding-bottom: 30px;
+}
+
+#app {
+    max-width: 1100px;
     margin: auto;
-    width: 70%;
-    font-size: 20pt;
-    font-family: 'Segoe UI Semilight', 'Helvetica Neue', sans-serif;
+    position: relative;
+}
+
+#app h3 {
+    color: #327FDB;
+    margin-left: 100px;
+    font-size: 18pt;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+#app i {
+    position: absolute;
+    left: 115px;
+    top: 58px;
+    color: #2C3E50;
+}
+
+#app input {
+    margin-left: 100px;
+    width: calc(100% - 260px);
+    font-size: 14pt;
+    font-weight: 700;
+    font-family: Lato, sans-serif;
     border: none;
-    box-shadow: dodgerblue 0px 0px 10px;
-    margin-bottom: 15pt;
-    padding: 3pt;
-    color: dodgerblue;
-    border-radius: 2pt;
+    margin-bottom: 30px;
+    padding: 12px 14px 14px 46px;
+    color: #2C3E50;
 }
 
-input:hover {
-    transition: all ease-in .1s;
-    box-shadow: royalblue 0px 0px 15px;
-    color: royalblue;
-}
-
-input:focus {
-    transition: all ease-in .1s;
-    box-shadow: slateblue 0px 0px 15px;
-    color: slateblue;
-}
-
-button {
+#app button {
     transition: background-color ease-in .1s;
-    background-color: dodgerblue;
-    color: white;
-    font-family: 'Segoe UI Light', 'Helvetica Neue', sans-serif;
+    background-color: #327FDB;
+    color: #ECF0F1;
+    font-family: Lato, sans-serif;
     font-size: 20pt;
     border: none;
     padding: 10pt 20pt 12pt 20pt;
-    box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 8px;
     cursor: pointer;
-    border-radius: 2pt;
+    display: block;
+    margin: auto;
+    box-sizing: border-box;
 }
 
-button:hover {
+#app button:hover {
     transition: background-color ease-in .1s;
-    background-color: royalblue;
+    background-color: #2968A9;
 }
 
-button:active {
-    background-color: slateblue;
+.block {
+    width: calc(100% - 80px);
+    margin: 20px;
+    margin-top: 30px;
+    background: white;
+    padding: 20px;
 }
 
-h4 {
-    font-size: 20pt;
-    color: dimgray;
-    font-weight: 100;
-    margin-bottom: 0;
+.block h4 {
+    font-size: 18pt;
+    color: #2C3E50;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 30px;
 }
 
-h1 {
-    margin-top: 10pt;
-    font-size: 40pt;
-    color: dodgerblue;
-    font-weight: 100;
+.block h4:last-child {
+    margin-bottom: 0px;
 }
 
-ul {
+.block h2 {
+    font-size: 35pt;
+    color: #2968A9;
+    font-weight: 400;
+    margin: 0;
+}
+
+.block ul {
     list-style-type: square;
     margin-left: calc(15% - 10pt);
 }
 
-li {
+.block li {
     font-size: 15pt;
     text-align: left;
 }
