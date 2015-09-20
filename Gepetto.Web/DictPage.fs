@@ -13,7 +13,8 @@ module DictPage =
     let resultLine result =
         li [
             aAttr [attr.href <| "/word/" + result.id.ToString ()] [
-                text <| result.name + " (" + result.``type`` + ")"
+                text <| result.name + " - "
+                spanAttr [attr.``class`` "wordType"] [text <| result.``type``]
             ]
         ] :> Doc
 

@@ -19,7 +19,7 @@ module HomePage =
 
         let output (st: Var<Status>) =
             let repDiv = divAttr [attr.``class`` "block"]
-            View.FromVar st
+            st.View
             |> View.Map (fun stat -> 
                 match stat with
                 | Empty -> div []

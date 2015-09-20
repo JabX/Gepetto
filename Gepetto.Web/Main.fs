@@ -7,9 +7,9 @@ open WebSharper.UI.Next.Server
 open WebSharper.UI.Next.Html
 
 module Templating =
-    type MainTemplate = Templating.Template<"Main.html">
+    type Template = Templating.Template<"Main.html">
 
-    let MenuBar (ctx: Context<EndPoint>) endpoint : Doc list =
+    let MenuBar ctx endpoint : Doc list =
         let ( => ) txt act =
              liAttr [if endpoint = act then yield attr.``class`` "active"] [
                 aAttr [attr.href (ctx.Link act)] [text txt]
@@ -20,10 +20,10 @@ module Templating =
             li [aAttr [attr.href "http://www.github.com/JabX/gepetto"] [text "github"]]
         ]
 
-    let Main ctx action body =
+    let Main ctx endpoint body =
         Content.Doc (
-            MainTemplate.Doc (
-                menubar = MenuBar ctx action,
+            Template.Doc (
+                menubar = MenuBar ctx endpoint,
                 body = body
             )
         )

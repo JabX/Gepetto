@@ -3,7 +3,7 @@
 open FSharp.Data
 
 module Dal =
-    
+
     type Word = {
         id: int
         name: string
@@ -19,12 +19,18 @@ module Dal =
 
     let SearchWordByName word = 
         (new WordByName()).Execute word
-        |> Seq.map (fun x -> { id = x.wordId; name = x.wordName; ``type`` = x.typeName })
+        |> Seq.map (fun x -> {id = x.wordId; name = x.wordName; ``type`` = x.typeName})
 
-    type WordById = SqlCommandProvider<"select wordName from Word where wordId = @id", Config.DbString>
+    type WordById = SqlCommandProvider<"
+        select wordId, wordName, typeName 
+        from Word 
+        join WordType on Word.typeId = WordType.typeId 
+        where wordId = @id", Config.DbString>
 
     let GetWord wordId =
-        (new WordById()).Execute wordId |> Seq.head
+        (new WordById()).Execute wordId
+        |> Seq.head
+        |> fun x -> {id = x.wordId; name = x.wordName; ``type`` = x.typeName}
 
     type FormsForWord = SqlCommandProvider<"select formName from Form where wordId = @id", Config.DbString>
 
@@ -32,15 +38,16 @@ module Dal =
         (new FormsForWord()).Execute wordId
 
     type SynonymsForWord = SqlCommandProvider<"
-        select wordName 
+        select wordId, wordName 
         from Synonym
         join Word on Word.wordId = Synonym.wordId1
         where wordId2 = @id1
         union
-        select wordName 
+        select wordId, wordName 
         from Synonym
         join Word on Word.wordId = Synonym.wordId2
         where wordId1 = @id2", Config.DbString>
 
     let GetSynonyms wordId =
         (new SynonymsForWord()).Execute (wordId, wordId)
+        |> Seq.map (fun x -> {id = x.wordId; name = x.wordName; ``type`` = ""})
